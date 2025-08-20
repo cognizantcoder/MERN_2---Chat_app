@@ -58,4 +58,4 @@ app.use("/api/messages", messageRouter);
   }
 })();
 
-export default server;
+export default app;
