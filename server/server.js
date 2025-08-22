@@ -50,9 +50,10 @@ app.use("/api/auth", userRouter);
 app.use("/api/messages", messageRouter);
 
 // Boot app in async IIFE to allow top-level await in all node versions
-(async () => {
-  await connectDB();
 
-  const PORT = process.env.PORT || 5000;
-  server.listen(PORT, () => console.log("server is running on PORT:" + PORT));
-})();
+await connectDB();
+
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => console.log("server is running on PORT:" + PORT));
+
+export default server; 
