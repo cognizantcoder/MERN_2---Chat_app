@@ -10,6 +10,7 @@ import { Server } from "socket.io";
 // create express app and http server
 const app = express();
 const server = http.createServer(app);
+
 // create socket.io
 export const io = new Server(server, {
   cors: {
@@ -52,10 +53,6 @@ app.use("/api/messages", messageRouter);
 (async () => {
   await connectDB();
 
-  if (process.env.NODE_ENV !== "production") {
-    const PORT = process.env.PORT || 5000;
-    server.listen(PORT, () => console.log("server is running on PORT:" + PORT));
-  }
-});
-
-export default app;
+  const PORT = process.env.PORT || 5000;
+  server.listen(PORT, () => console.log("server is running on PORT:" + PORT));
+})();
